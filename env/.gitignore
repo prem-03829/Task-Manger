@@ -1,0 +1,13 @@
+# Ignore Python cached files
+__pycache__/
+*.pyc
+
+# Ignore virtual environment
+env/
+venv/
+
+# Ignore SQLite database (this keeps data on Render)
+instance/*.db
+
+# Ignore system/editor files
+.DS_Store
