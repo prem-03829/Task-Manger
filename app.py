@@ -5,11 +5,16 @@ import os
 
 app=Flask(__name__)
 
+# ✅ Automatic Database Switching
 raw_url = os.getenv("DATABASE_URL")
-if raw_url and raw_url.startswith("postgres://"):
-    raw_url = raw_url.replace("postgres://", "postgresql://", 1)
 
-app.config['SQLALCHEMY_DATABASE_URI'] = raw_url
+if raw_url:  # Running on Render
+    if raw_url.startswith("postgres://"):
+        raw_url = raw_url.replace("postgres://", "postgresql://", 1)
+    app.config['SQLALCHEMY_DATABASE_URI'] = raw_url
+else:  # Running locally
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db'
+
 app.config['SQLALCHEMY_ENGINE_OPTIONS'] = {"pool_pre_ping": True}
 db=SQLAlchemy(app)
 
