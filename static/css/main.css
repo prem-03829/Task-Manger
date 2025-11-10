@@ -95,7 +95,7 @@ th{
     z-index: 100;
 }
 
-.submit-btn{
+.btn{
     background-color: var(--box);
     color: var(--asset);
     border-style: solid;
@@ -106,7 +106,7 @@ th{
     transition: color 0.25s, background-color 0.25s;
 }
 
-.submit-btn:hover{
+.btn:hover{
     color: var(--box);
     background-color: var(--asset);
 }
